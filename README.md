@@ -4,14 +4,19 @@ Hash#bury and Array#bury core method additions
 ## Extracted from my ruby-lang post
 In Matz's recent Rubyconf talk, he used this example for the new 'dig' feature coming in Ruby 2.3:
 
+```
 # we want this
 data[:users][0][:name]
-
+```
+```
 # we can do this w/o nil errors
 data.dig(:users, 0, :name)
+```
 What I'm proposing is a 'bury' feature that is the opposite of 'dig' in a sense. It inserts a value at an arbitrary depth, for example:
 
+```
 data.bury(:users, 0, :name, 'Matz')
+```
 This will create a nested hash or an array automatically at each step if it doesn't already exist, and that can be inferred from the what the user is passing (such as a symbol or string for a hash or an integer for an array). It's similar to autovivification but more powerful!
 
 This behavior is very common, at least in my experience, so a dry method built into Ruby would be awesome!
