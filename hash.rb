@@ -1,7 +1,6 @@
 class Hash
   
   def bury *args
-    puts args
     if args.count < 2
       raise ArgumentError.new("2 or more arguments required")
     elsif args.count == 2
